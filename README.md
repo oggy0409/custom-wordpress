@@ -1,1 +1,1 @@
-# custom-wordpress
+# Custom Wordpress Code Snippet Library
