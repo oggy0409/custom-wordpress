@@ -1,3 +1,8 @@
+/*
+ * Add custom box to easy copy affiliate link, work with AffiliateWP
+ * copy your affiliate links on product pages. Once you're approved, they'll show up under the description.
+ * Demo: https://blog.society6.com/app/uploads/2018/07/screenshot3x-1600x1112.png
+ */
 add_action( 'woocommerce_after_add_to_cart_form', 'aff_template_sharing', 20 );
 function aff_template_sharing() {
 	global $product; $affiliate_id = affwp_get_affiliate_id();
@@ -14,7 +19,8 @@ function aff_template_sharing() {
 			jQuery(document).ready(function($) {
 				$(".product-aff button").click(function() {
 					$(this).siblings("input.copy-text").select();
-					document.execCommand("copy");$(this).html("Copied")
+					document.execCommand("copy");
+					$(this).html("Copied")
 				});
 			});
 			</script>';
