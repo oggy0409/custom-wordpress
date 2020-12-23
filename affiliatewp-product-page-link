@@ -1,22 +1,22 @@
 add_action( 'woocommerce_after_add_to_cart_form', 'aff_template_sharing', 20 );
 function aff_template_sharing() {
 	global $product; $affiliate_id = affwp_get_affiliate_id();
-  $status = affwp_get_affiliate_status( $affiliate_id );
+	$status = affwp_get_affiliate_status( $affiliate_id );
 	if( $status == 'active' ) {
-    $user = wp_get_current_user();
-    $aff  = $product->get_permalink() . '?curator=' . $user->user_login;
+		$user = wp_get_current_user();
+		$aff  = $product->get_permalink() . '?curator=' . $user->user_login;
 		echo '<label class="aff-link">Your affiliate link:</label>
-    <div class="product-aff">
-    <input type="text" class="copy-text" value="'. $aff .'" >
-		<button class="aff-button">Copy</button>
-    </div>';
+			<div class="product-aff">
+				<input type="text" class="copy-text" value="'. $aff .'" >
+				<button class="aff-button">Copy</button>
+			</div>';
 		echo '<script>
-    jQuery(document).ready(function($) {
-		  $(".product-aff button").click(function() {
-        $(this).siblings("input.copy-text").select();      
-		    document.execCommand("copy");$(this).html("Copied")
-		  });
-    });
-    </script>';
+			jQuery(document).ready(function($) {
+				$(".product-aff button").click(function() {
+					$(this).siblings("input.copy-text").select();
+					document.execCommand("copy");$(this).html("Copied")
+				});
+			});
+			</script>';
 	}
 }
